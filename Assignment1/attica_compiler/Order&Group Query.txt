@@ -1,0 +1,8 @@
+java -jar attica.jar
+
+select data.stringu1, data.unique1 from data order by data.stringu1, data.unique1;
+
+enable hash;
+select data.stringu1, data.unique1 from data group by data.stringu1, data.unique1;
+
+System.out.println("done");

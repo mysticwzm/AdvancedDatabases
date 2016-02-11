@@ -1,0 +1,28 @@
+javac WBGen.java
+
+java WBGen data 10000 > data.sql
+java WBGen data1 10000 > data1.sql
+
+set classpath=%classpath%;E:\Java_WorkSpace\attica_compiler\build
+(attica/build)
+
+java org.dejave.attica.server.Database attica.properties < data.sql
+java org.dejave.attica.server.Database attica.properties < data1.sql
+
+java -jar attica.jar
+
+ExternalSort:
+select data.unique1, data.unique2 from data order by data.unique1;
+
+HashGroup:
+enable hash;
+select data.stringu1, data.unique1 from data group by data.stringu1, data.unique1;
+
+System.out.println("done");
+
+MergeJoin:
+select data.unique1, data.unique2, data1.unique1, data1.unique2 from data, data1 where data.unique1 = data1.unique2;
+
+GraceHashJoin:
+enable hash;
+select data.unique1, data.unique2, data1.unique1, data1.unique2 from data, data1 where data.unique1 = data1.unique2;

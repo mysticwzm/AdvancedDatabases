@@ -1,0 +1,2 @@
+set classpath=%classpath%;E:\Java_WorkSpace\attica_compiler\build
+(attica/build)
